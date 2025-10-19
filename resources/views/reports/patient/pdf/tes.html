@@ -1,0 +1,191 @@
+<html>
+<head>
+	<title>Membuat Laporan PDF Dengan DOMPDF Laravel</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+	<style type="text/css">
+		table tr td,
+		table tr th{
+			font-size: 9pt;
+		}
+	</style>
+
+	<style>
+			
+			
+			.fieldset1
+			{
+			    border-style: solid;
+				border-width: thin;
+				
+			
+			}
+			.legend1
+			{
+			  margin-bottom:0px;
+			  margin-left:16px;
+			  font-size:14px;
+			  font-weight : 200; 
+			 
+			}
+		   .fieldset1 .box-kp{
+			   
+			   
+			    width : 13px;
+			    height : 13px;
+			    border-style: solid;
+				border-width: thin;
+				padding :1px;
+				
+				
+			    align-items: center;
+			    justify-content: center
+				
+			   
+
+		   }
+		   .box-kp span{
+			    font-family: "DejaVu Sans Mono", monospace;
+			    font-size :19px;
+				display: block;
+				margin-top : -11px;
+				margin-left: auto;
+				margin-right: auto
+		   }
+		</style>
+		
+
+	<center>
+		<h5>Membuat Laporan PDF Dengan DOMPDF Laravel</h4>
+		<h6><a target="_blank" href="https://www.malasngoding.com/membuat-laporan-…n-dompdf-laravel/">www.malasngoding.com</a></h5>
+	</center>
+    <p>&#10004; milk<br>&#10004; butter<br>&#10004; bread<p>&#918;
+	<table class='table table-bordered'>
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>Nama</th>
+				<th>Email</th>
+				<th>Alamat</th>
+				<th>Telepon</th>
+				<th>Pekerjaan</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+		</tbody>
+	</table>
+	<br/>
+	<br/>
+	<fieldset  class="fieldset1">
+			<legend class="legend1">Kebiasaan Dan Pekerjaan</legend>
+			<table  cellspacing="0" class="table_adpf" style="margin : 5px 30px 10px 20px;">
+					   <tbody>
+							<tr class="">
+								<td width="">Olahraga</td>
+								<td style="" width=""><div class="box-kp"><span>{{ ($data->riwayat->olahraga == 'Y')? html_entity_decode('&#10004;', ENT_COMPAT) : '' }}</span></div></td>
+								<td style="" width="">Frekuensi Per Minggu</td>
+								<td style="" width="">{{ $data->riwayat->frekuensi_per_minggu }}</td>
+								<td style="" width="">x/minggu</td>
+							</tr>
+							<tr class="">
+								<td width="">Merokok</td>
+								<td style="" width=""><div class="box-kp"><span>{{ ($data->riwayat->merokok == 'Y')? html_entity_decode('&#10004;', ENT_COMPAT) : '' }}</span></div></td>
+								<td style="" width="">Bungkus Per Hari</td>
+								<td style="" width="">{{ $data->riwayat->rokok_bungkus_per_hari }}</td>
+								<td style="" width="">bungkus/hari</td>
+							</tr>
+							<tr class="">
+								<td width="">Kopi</td>
+								<td style="" width=""><div class="box-kp"><span>{{ ($data->riwayat->kopi == 'Y')? html_entity_decode('&#10004;', ENT_COMPAT) : '' }}</span></div> </td>
+								<td style="" width="">Gelas Per Hari</td>
+								<td style="" width="">{{ $data->riwayat->kopi_gelas_per_hari }}</td>
+								<td style="" width="">gelas/hari</td>
+							</tr>
+							<tr class="">
+								<td width="">Alkohol</td>
+								<td style="" width=""><div class="box-kp"><span>{{ ($data->riwayat->alkohol == 'Y')? html_entity_decode('&#10004;', ENT_COMPAT) : '' }}</span></div></td>
+								<td style="" width="">Sebanyak</td>
+								<td style="" width="">{{ $data->riwayat->alkohol_sebanyak }}</td>
+								<td style="" width="">gelas/hari</td>
+							</tr>
+							<tr class="">
+								<td width="">Lama Tidur Perhari</td>
+								<td style="" width="">{{ $data->riwayat->lama_tidur_per_hari }}</td>
+								<td style="" width="">Jam</td>
+								<td style="" width=""></td>
+								<td style="" width=""></td>
+							</tr>
+							<tr class="">
+								<td width="">Rawat Inap</td>
+								<td style="" width=""><div class="box-kp"><span>{{ ($data->riwayat->pernah_rawat_inap == 'Y')? html_entity_decode('&#10004;', ENT_COMPAT) : '' }}</span></div> </td>
+								<td style="" width="">Selama</td>
+								<td style="" width="">{{ $data->riwayat->hari_lama_rawat_inap }}</td>
+								<td style="" width="">hari</td>
+							</tr>
+							<tr class="">
+								<td width="">Rawat inap karena penyakit</td>
+								<td style="" width=""><div class="box-kp"><span>{{ ($data->riwayat->rawat_inap_penyakit == 'Y')? html_entity_decode('&#10004;', ENT_COMPAT) : '' }}</span></div></td>
+								<td style="" width=""></td>
+								<td style="" width=""></td>
+								<td style="" width=""></td>
+							</tr>
+							<tr class="">
+								<td width="">Pernah kecelakaan Kerja</td>
+								<td style="" width=""><div class="box-kp"><span>{{ ($data->riwayat->pernah_kecelakaan_kerja == 'Y')? html_entity_decode('&#10004;', ENT_COMPAT) : '' }}</span></div> </td>
+								<td style="" width="">Pada Tahun</td>
+								<td style="" width="">{{ $data->riwayat->tahun_kecelakaan_kerja }}</td>
+								<td style="" width=""></td>
+							</tr>
+							<tr class="">
+								<td width="">Tempat kerja berbahaya</td>
+								<td style="" width=""><div class="box-kp"><span>{{ ($data->riwayat->tempat_kerja_berbahaya == 'Y')? html_entity_decode('&#10004;', ENT_COMPAT) : '' }}</span></div> </td>
+								<td style="" width=""></td>
+								<td style="" width=""></td>
+								<td style="" width=""></td>
+							</tr>
+						<tbody>
+				</table>
+			
+	</fieldset>		
+
+    	<style>
+			
+			div .fild {
+			  box-sizing: border-box;
+			}
+
+			div  .fild {
+			  display: flex;
+			}
+
+			
+			div  .col1 {
+			  flex: 50%;
+			  padding: 10px;
+			  height: 10px; 
+			  background-color:#aaa;
+			}
+			
+			div  .col2 {
+			  flex: 50%;
+			  padding: 10px;
+			  height: 10px; 
+			
+			}
+			
+			
+		</style>
+		<div class="fild2">
+			<div class="col1">
+			</div>
+			<div class="col2">
+				<fieldset  class="fieldset">
+					<legend class="legend1">Antropometri</legend>
+					ASd
+				</fieldset>
+			</div>
+		<div>
+</body>
+</html>

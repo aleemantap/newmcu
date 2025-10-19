@@ -1,0 +1,166 @@
+<html>
+<head>
+  <style>
+   /*  @page { 
+		  margin: 100px 25px; 
+	      size: A4;
+          margin: 20px 25px; 
+	} */
+	
+	@page {
+		margin: 0cm 0cm;
+	}
+
+	/** Define now the real margins of every page in the PDF **/
+	body {
+		margin-top: 2cm;
+		margin-left: 2cm;
+		margin-right: 2cm;
+		margin-bottom: 2cm;
+		font-family : arial;
+	}
+	
+	
+	
+    header { position: fixed; top: 3px; left: 0px; right: 0px; _background-color: lightblue; height: 0px; }
+    footer { position: fixed; bottom: 0px; left: 0px; right: 0px; background-color: lightblue; height: 50px; }
+    /*p { page-break-after: always;  } 
+    p:last-child { page-break-after: never; }*/
+	
+	
+	* {
+	  box-sizing: border-box;
+	}
+
+	/* Create two equal columns that floats next to each other */
+	.column1 {
+	  float: left;
+	  width: 50%;
+	  padding: 10px;
+	 
+	}
+	
+	.column2 {
+	  float: left;
+	  width: 50%;
+	  padding: 10px;
+	 
+	  background-color: lightblue;
+	}
+
+	/* Clear floats after the columns 
+	/*.row:after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	}*/
+	
+	.table {display:block; }
+	.row { display:block;}
+	.cell {display:inline-block;}
+	.cell_att{ width :100px;}
+  </style>
+</head>
+<body>
+	  <header>
+			<div class="row">
+			  <div class="column1">
+				<img style="padding-left:50px;padding-top:20px;" src="{{ public_path('img/logo1.png') }}" >
+			  </div>
+			  <div class="column2">
+				<div class="table">
+				   <div class="row">
+					  <div class="cell cell_att">
+						 Medical ID#
+					  </div>
+					  <div class="cell">
+					  </div>
+					  <div class="cell">
+						 20190801002700004026
+					  </div>
+				   </div>
+				   <div class="row">
+					  <div class="cell cell_att">
+						 Nama
+					  </div>
+					  <div class="cell">
+					  </div>
+					  <div class="cell">
+						 xxxxxxxx
+					  </div>
+				   </div>
+				   <div class="row">
+					  <div class="cell cell_att">
+						 Tanggal Lahir
+					  </div>
+					  <div class="cell">
+					  </div>
+					  <div class="cell">
+						 xxxxxxxx
+					  </div>
+				   </div>
+				   <div class="row">
+					  <div class="cell cell_att">
+						 NIP
+					  </div>
+					  <div class="cell">
+					  </div>
+					  <div class="cell">
+						 xxxxxxxx
+					  </div>
+				   </div>
+				   <div class="row">
+					  <div class="cell cell_att">
+						 Bagian
+					  </div>
+					  <div class="cell">
+					  </div>
+					  <div class="cell">
+						 xxxxxxxx
+					  </div>
+				   </div>
+				   <div class="row">
+					  <div class="cell cell_att">
+						 Perusahaan
+					  </div>
+					  <div class="cell">
+					  </div>
+					  <div class="cell">
+						  xxxxxxxx
+					  </div>
+				   </div>
+				   <div class="row">
+					  <div class="cell cell_att">
+						Paket MCU
+					  </div>
+					  <div class="cell">
+					  </div>
+					  <div class="cell">
+						 xxxxxxxx
+					  </div>
+				   </div>
+				</div>
+			  </div>
+			</div>
+	  </header>
+	  <footer>
+		Klinik Primasentul
+		Jl. Raya Serang KM.24 Ruko Unggul Center Blok A No. 11 Sentul Balaraja
+		Telp / Fax : 021 5945 1353
+		Email : primasentul@yahoo.com
+
+	  </footer>
+	  <main>
+		
+	    <p style="page-break-after: always;">
+			<div style="top:100px;position:absolute;">TESTES</div>
+		</p>
+		<p style="page-break-after: never;">
+			AAA
+		</p>
+		
+		
+	  </main>
+
+</body>
+</html>

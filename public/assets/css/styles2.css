@@ -1,0 +1,68 @@
+.switch {
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    padding: 10px 18px;
+    border-radius: 2px !important;
+    -webkit-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+    -ms-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.switch.on .switch-inner {
+    -webkit-transition: all ease 0.25s;
+    transition: all ease 0.25s;
+    left: 2px;
+    right: auto;
+    background-color: #2196f3;
+}
+
+.switch .switch-inner {
+    position: absolute;
+    -webkit-transition: all ease 0.25s;
+    transition: all ease 0.25s;
+    border-radius: 1px !important;
+    top: 2px;
+    right: 2px;
+    padding: 8px;
+    background-color: #ccc;
+}
+
+.ui-autocomplete {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    cursor: default;
+}
+
+input[type="color"].ui-autocomplete-loading,
+input[type="date"].ui-autocomplete-loading,
+input[type="datetime-local"].ui-autocomplete-loading,
+input[type="datetime"].ui-autocomplete-loading,
+input[type="email"].ui-autocomplete-loading,
+input[type="month"].ui-autocomplete-loading,
+input[type="number"].ui-autocomplete-loading,
+input[type="password"].ui-autocomplete-loading,
+input[type="search"].ui-autocomplete-loading,
+input[type="tel"].ui-autocomplete-loading,
+input[type="text"].ui-autocomplete-loading,
+input[type="time"].ui-autocomplete-loading,
+input[type="url"].ui-autocomplete-loading,
+input[type="week"].ui-autocomplete-loading {
+    background-image: url(../images/select2-spinner.gif) !important;
+    background-repeat: no-repeat;
+    background-position: 99% 50%;
+    padding-right: 27px;
+}
+
+input[type="text"].ui-autocomplete-loading,
+input[type="week"].ui-autocomplete-loading {
+    padding-left: 27px;
+}
+
+body.smart-style-6 .form-control:not(.ui-autocomplete-loading) {
+    background: 0 0;
+}
