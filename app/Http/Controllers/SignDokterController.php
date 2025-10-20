@@ -36,9 +36,9 @@ class SignDokterController  extends Controller
     }
     
 //10075
-    public function getUrlAwsFile($file)
+    public function getUrlAwsFile2($file)
     {
-        $ur = \Storage::cloud()->temporaryUrl('upload/'.$file,\Carbon\Carbon::now()->addMinutes(5));
+        $ur = Storage::cloud()->temporaryUrl('upload/'.$file,\Carbon\Carbon::now()->addMinutes(5));
         return $ur;
     }
 

@@ -264,13 +264,10 @@ $(document).ready(function () {
 
     // Toggle filter
     $('.form-filter a.hide').click(function() {
-      
         $(this).toggleClass('open');
         $('.filter-title').toggleClass('hidden');
         $('.form-filter form').toggleClass('open-filter');
     });
-
-   
 
     // You can use 'alert' for alert message
     // or throw to 'throw' javascript error

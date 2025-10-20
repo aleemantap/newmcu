@@ -3,7 +3,7 @@ namespace App\Helpers;
 
 use Illuminate\Support\Facades\DB;
 
-class Report {
+class ReportHelp { //ReportHelper
 
 	public static function getWh($id)
     {

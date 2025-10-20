@@ -7,6 +7,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use App\Models\VendorCustomer;
 use App\Models\Ttd;
+use Illuminate\Support\Facades\Storage;
 
 class Controller extends BaseController
 {
@@ -127,8 +128,18 @@ class Controller extends BaseController
 
     public function getUrlAwsFile($file)
     {
-         $ur = \Storage::cloud()->temporaryUrl('upload/'.$file,\Carbon\Carbon::now()->addMinutes(5));
+         //$ur = \Storage::cloud()->temporaryUrl('upload/'.$file,\Carbon\Carbon::now()->addMinutes(5));
+        //return $ur;
+
+         //$url = Storage::disk('minio')->url('upload/'.$file,\Carbon\Carbon::now()->addMinutes(5));
+        //  $url = Storage::disk('minio')->temporaryUrl(
+        //     $file, 
+        //     now()->addMinutes(60)
+        // );
+
+        $ur = Storage::cloud()->temporaryUrl('upload/'.$file,\Carbon\Carbon::now()->addMinutes(5));
         return $ur;
+        //$urlIcon = \Storage::cloud()->temporaryUrl($app[0]['icon_url'],\Carbon\Carbon::now()->addMinutes(10075));
     }
 
     public function dataTtd($mcu)

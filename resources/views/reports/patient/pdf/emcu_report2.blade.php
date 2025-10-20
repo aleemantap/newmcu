@@ -927,36 +927,36 @@
 					   <tbody>
 							<tr style="">
 								<td width="20%"><b>Hemoglobin (Hb)</b></td>
-								<td style="" width="20%"><?php echo ReportHelp::Hemoglobin($data->hematologi?$data->hematologi->hemoglobin:'',$data['jenis_kelamin']);?></td>
+								<td style="" width="20%"><?php echo \App\Helpers\ReportHelp::Hemoglobin($data->hematologi?$data->hematologi->hemoglobin:'',$data['jenis_kelamin']);?></td>
 								<td style="" width="60%" colspan="4">gr/dL (L:13-18 | P;11,5-16,5)</td>
 
 							</tr>
 							<tr >
 								<td width=""><b>Hematokrit (Ht)</b></td>
-								<td style="" width=""><?php echo ReportHelp::Hematokrit($data->hematologi?$data->hematologi->hematokrit:'',$data['jenis_kelamin']);?></td>
+								<td style="" width=""><?php echo \App\Helpers\ReportHelp::Hematokrit($data->hematologi?$data->hematologi->hematokrit:'',$data['jenis_kelamin']);?></td>
 								<td style="" width="60%" colspan="4">% (L:40-50 | P: 37-43)</td>
 
 							</tr>
 							<tr style="">
 								<td width=""><b>Eritrosit (Eri)</b></td>
-								<td style="" width=""><?php echo ReportHelp::Eritrosit($data->hematologi?$data->hematologi->eritrosit:'',$data['jenis_kelamin']);?></td>
+								<td style="" width=""><?php echo \App\Helpers\ReportHelp::Eritrosit($data->hematologi?$data->hematologi->eritrosit:'',$data['jenis_kelamin']);?></td>
 								<td style="" colspan="4">*10<sup>6</sup>/mm<sup>3</sup> (L:4,5-5,5 | P:4-5)</td> 
 
 							</tr>
 							<tr>
 								<td width=""><b>Leukosit (Leu)</b></td>
-								<td style="" width=""><?php echo ReportHelp::Leukosit($data->hematologi?$data->hematologi->leukosit:'');?></td>
+								<td style="" width=""><?php echo \App\Helpers\ReportHelp::Leukosit($data->hematologi?$data->hematologi->leukosit:'');?></td>
 								<td style="" width="" colspan="4">/mm<sup>3</sup> (4.000 - 11.000)</td> 
 
 							</tr>
 							<tr style="">
 								<td width=""><b>Trombosit (Trom)</b></td>
-								<td style="" width=""><?php echo ReportHelp::Trombosit($data->hematologi?$data->hematologi->trombosit:'');?></td>
+								<td style="" width=""><?php echo \App\Helpers\ReportHelp::Trombosit($data->hematologi?$data->hematologi->trombosit:'');?></td>
 								<td style="" width="" colspan="4">*10<sup>3</sup>/mm<sup>3</sup> (150 - 400)</td> 
 							</tr>
 							<tr>
 								<td width=""><b>LED</b></td>
-								<td style="" width=""><?php echo ReportHelp::LED($data->hematologi?$data->hematologi->laju_endap_darah:'',$data['jenis_kelamin']);?></td>
+								<td style="" width=""><?php echo \App\Helpers\ReportHelp::LED($data->hematologi?$data->hematologi->laju_endap_darah:'',$data['jenis_kelamin']);?></td>
 								<td style="" width="" colspan="4">mm/jam (L:0-10 | P:0-15)</td>
 
 							</tr>
@@ -978,31 +978,31 @@
 							</tr>
 							<tr>
 								<td width=""><b>Basofil</b></td>
-								<td style="" width=""><?php echo ReportHelp::Basofil($data->hematologi?$data->hematologi->basofil:'');?></td>
+								<td style="" width=""><?php echo \App\Helpers\ReportHelp::Basofil($data->hematologi?$data->hematologi->basofil:'');?></td>
 								<td style="" width="">% (0-1)</td>
 								<td style="" width="">MCP</td>
-								<td style="" width=""><?php echo ReportHelp::MCV($data->hematologi?$data->hematologi->mcv:'');?></td>
+								<td style="" width=""><?php echo \App\Helpers\ReportHelp::MCV($data->hematologi?$data->hematologi->mcv:'');?></td>
 								<td style="" width="">82-92 Femtoliter</td>
 							</tr>
 							<tr style="">
 								<td width=""><b>Eosinofil</b></td>
-								<td style="" width=""><?php echo ReportHelp::Eosinofil($data->hematologi?$data->hematologi->eosinofil:'');?></td>
+								<td style="" width=""><?php echo \App\Helpers\ReportHelp::Eosinofil($data->hematologi?$data->hematologi->eosinofil:'');?></td>
 								<td style="" width="">% (1-3)</td>
 								<td style="" width="">MCH</td>
-								<td style="" width=""><?php echo ReportHelp::MCH($data->hematologi?$data->hematologi->mch:'');?></td>
+								<td style="" width=""><?php echo \App\Helpers\ReportHelp::MCH($data->hematologi?$data->hematologi->mch:'');?></td>
 								<td style="" width="">27-31 Pgrams/sel</td>
 							</tr>
 							<tr>
 								<td width=""><b>Neutrofil Batang</b></td>
-								<td style="" width=""><?php echo ReportHelp::Neutrofil_batang($data->hematologi?$data->hematologi->neutrofil_batang:'');?></td>
+								<td style="" width=""><?php echo \App\Helpers\ReportHelp::Neutrofil_batang($data->hematologi?$data->hematologi->neutrofil_batang:'');?></td>
 								<td style="" width="">% (2-5)</td>
 								<td style="" width="">MCHC</td>
-								<td style="" width=""><?php echo ReportHelp::Mchc($data->hematologi?$data->hematologi->mchc:'');?></td>
+								<td style="" width=""><?php echo \App\Helpers\ReportHelp::Mchc($data->hematologi?$data->hematologi->mchc:'');?></td>
 								<td style="" width="">32-37 gram / dL</td>
 							</tr>
 							<tr style="">
 								<td width=""><b>Neutrofil Segmen</b></td>
-								<td style="" width=""><?php echo ReportHelp::Neutrofil_segment($data->hematologi?$data->hematologi->neutrofil_segment:'');?></td>
+								<td style="" width=""><?php echo \App\Helpers\ReportHelp::Neutrofil_segment($data->hematologi?$data->hematologi->neutrofil_segment:'');?></td>
 								<td style="" width="">% (50-70)	</td>
 								<td style="" width=""></td>
 								<td style="" width=""></td>
@@ -1010,14 +1010,14 @@
 							</tr>
 							<tr>
 								<td width=""><b>Limfosit</b></td>
-								<td style="" width=""><?php echo ReportHelp::Limfosit($data->hematologi?$data->hematologi->limfosit:'');?></td>
+								<td style="" width=""><?php echo \App\Helpers\ReportHelp::Limfosit($data->hematologi?$data->hematologi->limfosit:'');?></td>
 								<td style="" width="">% (20-40)</td>
 								<td style="" colspan="2">Golongan Darah (ABO)</td>
 								<td style="">{{ $data->hematologi?$data->hematologi->golongan_darah_abo:'' }}</td>
 							</tr>
 							<tr style="">
 								<td width=""><b>Monosit</b></td>
-								<td style="" width=""><?php echo ReportHelp::Monosit($data->hematologi?$data->hematologi->monosit:'');?></td>
+								<td style="" width=""><?php echo \App\Helpers\ReportHelp::Monosit($data->hematologi?$data->hematologi->monosit:'');?></td>
 								<td style="" width="">% (2-6)</td>
 								<td style="" width="" colspan="2">Golongan Darah (Rh)</td>
 								<td style="" >{{ $data->hematologi?$data->hematologi->golongan_darah_rh:'' }}</td>
@@ -1109,7 +1109,7 @@
 					</tr>
 					<tr>
 						<td width="15%">Urobilinogen</td>
-						<td style="" width=""><?php echo ReportHelp::Urobilinogen($data->hematologi?$data->hematologi->urobilinogen:'');?></td>
+						<td style="" width=""><?php echo \App\Helpers\ReportHelp::Urobilinogen($data->hematologi?$data->hematologi->urobilinogen:'');?></td>
 						<td style="" width="">mg/dL (0,2)</td>
 						<td style="" width="">HCG</td>
 						<td style="" width="">{{ $data->urin?$data->urin->hcg:'' }}</td>
@@ -1128,34 +1128,34 @@
 					<tbody>
 						<tr style="">
 							<td width="10%">GDS</td>
-							<td width="10%"><?php echo ReportHelp::GDS($data->kimia?$data->kimia->gds:'');?></td>
+							<td width="10%"><?php echo \App\Helpers\ReportHelp::GDS($data->kimia?$data->kimia->gds:'');?></td>
 							<td width="25%">mg/dL (60 - 200)</td>
 							<td style="" width="">Bilirubin Total</td>
-							<td style="" width=""><?php echo ReportHelp::BilirubinTotal($data->kimia?$data->kimia->bilirubin_total:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::BilirubinTotal($data->kimia?$data->kimia->bilirubin_total:'');?></td>
 							<td width="25%">mg/dL (0-1)</td>
 						</tr> 
 						<tr>
 							<td width="15%">GDP</td>
-							<td style="" width=""><?php echo ReportHelp::GDP($data->kimia?$data->kimia->gdp:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::GDP($data->kimia?$data->kimia->gdp:'');?></td>
 							<td style="" width="">mg/dL (60 - 125)</td>
 							<td style="" width="">Bilirubin Direk</td>
-							<td style="" width=""><?php echo ReportHelp::BilirubinDirek($data->kimia?$data->kimia->bilirubin_direk:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::BilirubinDirek($data->kimia?$data->kimia->bilirubin_direk:'');?></td>
 							<td style="" width="">mg/dL (0 - 0,25)</td>
 						</tr>
 						<tr style="">
 							<td width="15%">2 Jam PP</td>
-							<td style="" width=""><?php echo ReportHelp::duaJamPP($data->kimia?$data->kimia->dua_jam_pp:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::duaJamPP($data->kimia?$data->kimia->dua_jam_pp:'');?></td>
 							<td style="" width="">mg/dL (60 - 140)</td>
 							<td style="" width="">Bilirubin Indirek</td>
-							<td style="" width=""><?php echo ReportHelp::BilirubinInDirek($data->kimia?$data->kimia->bilirubin_indirek:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::BilirubinInDirek($data->kimia?$data->kimia->bilirubin_indirek:'');?></td>
 							<td style="" width="">mg/dL (0-0,75)</td>
 						</tr>
 						<tr>
 							<td width="15%">HbA1c</td>
-							<td style="" width=""><?php echo ReportHelp::HbA1c($data->kimia?$data->kimia->hba1c:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::HbA1c($data->kimia?$data->kimia->hba1c:'');?></td>
 							<td style="" width=""><span>&#37;</span> (&#x3c; 6,5)</td>
 							<td style="" width="">SGOT</td>
-							<td style="" width=""><?php echo ReportHelp::SGOT($data->kimia?$data->kimia->sgot:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::SGOT($data->kimia?$data->kimia->sgot:'');?></td>
 							<td style="" width="">mg/dL (15-34)</td>
 						</tr>
 						<tr style="">
@@ -1163,63 +1163,63 @@
 							<td style="" width=""></td>
 							<td style="" width=""></td>
 							<td style="" width="">SGPT</td>
-							<td style="" width=""><?php echo ReportHelp::SGPT($data->kimia?$data->kimia->sgpt:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::SGPT($data->kimia?$data->kimia->sgpt:'');?></td>
 							<td style="" width="">mg/dL (15-60)</td>
 						</tr>
 						<tr>
 							<td width="15%">Ureum</td>
-							<td style="" width=""><?php echo ReportHelp::Ureum($data->kimia?$data->kimia->ureum:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::Ureum($data->kimia?$data->kimia->ureum:'');?></td>
 							<td style="" width="">mg/dL (15-39)</td>
 							<td style="" width="">Protein</td>
-							<td style="" width=""><?php echo ReportHelp::Protein($data->kimia?$data->kimia->protein:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::Protein($data->kimia?$data->kimia->protein:'');?></td>
 							<td style="" width="">mg/dL (6,2 - 8,4)</td>
 						</tr>
 						<tr style="">
 							<td width="15%">Kreatinin</td>
-							<td style="" width=""><?php echo ReportHelp::Kreatinin($data->kimia?$data->kimia->kreatinin:'',$data['jenis_kelamin']);?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::Kreatinin($data->kimia?$data->kimia->kreatinin:'',$data['jenis_kelamin']);?></td>
 							<td style="" width="">mg/dL (L:0,62-1,1 | P:0,45-0,7)</td>
 							<td style="" width="">Albumin</td>
-							<td style="" width=""><?php echo ReportHelp::Albumin($data->kimia?$data->kimia->albumin:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::Albumin($data->kimia?$data->kimia->albumin:'');?></td>
 							<td style="" width="">mg/dL (3,5 - 5,5)</td>
 						</tr>
 						<tr>
 							<td width="15%">Asam Urat</td>
-							<td style="" width=""><?php echo ReportHelp::AsamUrat($data->kimia?$data->kimia->asam_urat:'',$data['jenis_kelamin']);?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::AsamUrat($data->kimia?$data->kimia->asam_urat:'',$data['jenis_kelamin']);?></td>
 							<td style="" width="">mg/dL (L:3,5 - 7,2 | P:2,6-6,0)</td>
 							<td style="" width="">Alkaline fosfatase</td>
-							<td style="" width=""><?php echo ReportHelp::Alkalinefosfatase($data->kimia?$data->kimia->alkaline_fosfatase:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::Alkalinefosfatase($data->kimia?$data->kimia->alkaline_fosfatase:'');?></td>
 							<td style="" width="">mg/dL (45 - 190)</td> 
 						</tr>
 						<tr style="">
 							<td width="15%">Trigliserida</td> 
-							<td style="" width=""><?php echo ReportHelp::Trigliserida($data->kimia?$data->kimia->trigliserida:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::Trigliserida($data->kimia?$data->kimia->trigliserida:'');?></td>
 							<td style="" width="">mg/dL (&#60; 200)</td>
 							<td style="" width="">Choline Esterase</td> 
-							<td style="" width=""><?php echo ReportHelp::CholineEsterase($data->kimia?$data->kimia->choline_esterase:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::CholineEsterase($data->kimia?$data->kimia->choline_esterase:'');?></td>
 							<td style="" width="">U/L (4300-10500)</td> 
 						</tr>
 						<tr>
 							<td width="15%">Kolesterol Total</td>
-							<td style="" width=""><?php echo ReportHelp::KolesterolTotal($data->kimia?$data->kimia->kolesterol_total:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::KolesterolTotal($data->kimia?$data->kimia->kolesterol_total:'');?></td>
 							<td style="" width="">mg/dL (&#60; 200)</td>
 							<td style="" width="">Gamma GT</td>
-							<td style="" width=""><?php echo ReportHelp::gammaGt($data->kimia?$data->kimia->gamma_gt:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::gammaGt($data->kimia?$data->kimia->gamma_gt:'');?></td>
 							<td style="" width="">IU/L (0-51)</td> 
 						</tr>
 						<tr style="">
 							<td width="15%">HDL</td>
-							<td style="" width=""><?php echo ReportHelp::HDL($data->kimia?$data->kimia->hdl:'',$data['jenis_kelamin']);?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::HDL($data->kimia?$data->kimia->hdl:'',$data['jenis_kelamin']);?></td>
 							<td style="" width="">mg/dL (L:35-55 | P:45-65)</td>
 							<td style="" width="">CK</td>
-							<td style="" width=""><?php echo ReportHelp::CK($data->kimia?$data->kimia->ck:'',$data['jenis_kelamin']);?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::CK($data->kimia?$data->kimia->ck:'',$data['jenis_kelamin']);?></td>
 							<td style="" width="">mg/dL (L:30-180 | P:25-150)</td> 
 						</tr>
 						<tr>
 							<td width="15%">LDL</td>
-							<td style="" width=""><?php echo ReportHelp::LDL($data->kimia?$data->kimia->ldl_direk:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::LDL($data->kimia?$data->kimia->ldl_direk:'');?></td>
 							<td style="" width="">mg/dL (&#60;150)</td>
 							<td style="" width="">CKMB</td>
-							<td style="" width=""><?php echo ReportHelp::CKMB($data->kimia?$data->kimia->ckmb:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::CKMB($data->kimia?$data->kimia->ckmb:'');?></td>
 							<td style="" width="">mg/dL (&#60;10 U/L)</td>
 						</tr>
 						<!-- <tr style="">
@@ -1240,7 +1240,7 @@
 						</tr>
 						<tr style="">
 							<td width="15%">HBSAg</td>
-							<td style="" width=""><?php echo ReportHelp::HBSAg($data->serologi?$data->serologi->hbsag:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::HBSAg($data->serologi?$data->serologi->hbsag:'');?></td>
 							<td style="" width="">(Non Reaktif)</td>
 							<td style="" width=""></td>
 							<td style="" width=""></td>
@@ -1248,10 +1248,10 @@
 						</tr>
 						<tr>
 							<td width="15%">Anti HBS</td>
-							<td style="" width=""><?php echo ReportHelp::AntiHBS($data->serologi?$data->serologi->anti_hbs:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::AntiHBS($data->serologi?$data->serologi->anti_hbs:'');?></td>
 							<td style="" width="">(Non Reaktif)</td>
 							<td style="" width="">Sputum BTA 1</td>
-							<td style="" width=""><?php echo ReportHelp::SputumBTA1($data->kimia?$data->kimia->spuktum_bta1:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::SputumBTA1($data->kimia?$data->kimia->spuktum_bta1:'');?></td>
 							<td style="" width="">(Negatif)</td>
 						</tr>
 						<tr style="">
@@ -1259,7 +1259,7 @@
 							<td style="" width=""></td>
 							<td style="" width=""></td>
 							<td style="" width="">Sputum BTA 2</td>
-							<td style="" width=""><?php echo ReportHelp::SputumBTA2($data->kimia?$data->kimia->spuktum_bta2:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::SputumBTA2($data->kimia?$data->kimia->spuktum_bta2:'');?></td>
 							<td style="" width="">(Negatif)</td>
 						</tr>
 						<tr>
@@ -1267,7 +1267,7 @@
 							<td style="" width=""></td>
 							<td style="" width=""></td>
 							<td style="" width="">Sputum BTA 3</td>
-							<td style="" width=""><?php echo ReportHelp::SputumBTA3($data->kimia?$data->kimia->spuktum_bta3:'');?></td>
+							<td style="" width=""><?php echo \App\Helpers\ReportHelp::SputumBTA3($data->kimia?$data->kimia->spuktum_bta3:'');?></td>
 							<td style="" width="">(Negatif)</td>
 						</tr>
 					</tbody>

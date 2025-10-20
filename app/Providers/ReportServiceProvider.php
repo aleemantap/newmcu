@@ -13,7 +13,7 @@ class ReportServiceProvider extends ServiceProvider
      */
     public function register()
     {
-         require_once app_path() . '/Helpers/Report.php';
+        // require_once app_path() . '/Helpers/Report.php';
     }
 
     /**

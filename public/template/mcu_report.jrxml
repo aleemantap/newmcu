@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="mcu_report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b05507d8-03dc-409e-8acd-9ccd3e0ea114">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="bin\DataAdapter.xml"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="451"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="539"/>
+	<subDataset name="Antrovisus" uuid="d853aa8b-5f41-4d8c-8527-ea32cce32384">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="bin\DataAdapter.xml"/>
+		<parameter name="mcuId" class="java.lang.String" nestedType="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[select * from antrovisus where mcu_id =  $P{mcuId}]]>
+		</queryString>
+		<field name="id" class="java.math.BigInteger">
+			<property name="com.jaspersoft.studio.field.label" value="id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="antrovisus"/>
+		</field>
+		<field name="berat_badan" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="berat_badan"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="antrovisus"/>
+		</field>
+		<field name="tinggi_badan" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="tinggi_badan"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="antrovisus"/>
+		</field>
+		<field name="bmi" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="bmi"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="antrovisus"/>
+		</field>
+		<field name="visus_kanan" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="visus_kanan"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="antrovisus"/>
+		</field>
+		<field name="visus_kiri" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="visus_kiri"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="antrovisus"/>
+		</field>
+		<field name="rekomendasi_kacamatan" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="rekomendasi_kacamatan"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="antrovisus"/>
+		</field>
+		<field name="spheris_kanan" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="spheris_kanan"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="antrovisus"/>
+		</field>
+		<field name="cylinder_kanan" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="cylinder_kanan"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="antrovisus"/>
+		</field>
+		<field name="axis_kanan" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="axis_kanan"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="antrovisus"/>
+		</field>
+		<field name="addition_kanan" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="addition_kanan"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="antrovisus"/>
+		</field>
+		<field name="spheris_kiri" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="spheris_kiri"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="antrovisus"/>
+		</field>
+		<field name="cylinder_kiri" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="cylinder_kiri"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="antrovisus"/>
+		</field>
+		<field name="axis_kiri" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="axis_kiri"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="antrovisus"/>
+		</field>
+		<field name="addition_kiri" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="addition_kiri"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="antrovisus"/>
+		</field>
+		<field name="pupil_distance" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="pupil_distance"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="antrovisus"/>
+		</field>
+		<field name="mcu_id" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="mcu_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="antrovisus"/>
+		</field>
+	</subDataset>
+	<parameter name="mcuId" class="java.lang.String" nestedType="java.lang.String">
+		<parameterDescription><![CDATA[Medical Check Up Id]]></parameterDescription>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from emcu.mcu where id = $P{mcuId}]]>
+	</queryString>
+	<field name="id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mcu"/>
+	</field>
+	<field name="no_nip" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_nip"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mcu"/>
+	</field>
+	<field name="no_paper" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_paper"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mcu"/>
+	</field>
+	<field name="tgl_input" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="tgl_input"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mcu"/>
+	</field>
+	<field name="nama_pasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nama_pasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mcu"/>
+	</field>
+	<field name="tgl_lahir" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="tgl_lahir"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mcu"/>
+	</field>
+	<field name="jenis_kelamin" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="jenis_kelamin"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mcu"/>
+	</field>
+	<field name="bagian" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="bagian"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mcu"/>
+	</field>
+	<field name="paket_mcu" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="paket_mcu"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mcu"/>
+	</field>
+	<field name="tgl_kerja" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="tgl_kerja"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mcu"/>
+	</field>
+	<field name="email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mcu"/>
+	</field>
+	<field name="telepon" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="telepon"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mcu"/>
+	</field>
+	<field name="client" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="client"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mcu"/>
+	</field>
+	<field name="customer_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="customer_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mcu"/>
+	</field>
+	<field name="published" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="published"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mcu"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="528" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="360" y="10" width="70" height="12" uuid="d9c50610-b959-41bc-a9c1-10774d7c1d38">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Medical ID #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="22" width="70" height="12" uuid="9fed9051-248c-4f34-8965-ba2b9f02d0b2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="34" width="70" height="12" uuid="80334df9-4f95-42ba-b436-4a71e075a8d7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Jenis Kelamin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="46" width="70" height="12" uuid="6cf35ecd-b035-41b6-9ada-703db853ff70">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Tgl. Lahir]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="430" y="22" width="125" height="12" uuid="eeeeb078-c368-4154-9791-379e79673f6f"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_pasien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="10" width="124" height="12" uuid="3af636a6-594f-420a-a480-eb2f677efb9a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField pattern="d MMMM yyyy">
+				<reportElement x="430" y="46" width="125" height="12" uuid="7c66b5e5-4d36-4f24-9f43-85d846eaab7f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tgl_lahir}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="70" width="125" height="12" uuid="a1cf31be-2770-424a-881f-ad1c3960d0f9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bagian}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="58" width="125" height="12" uuid="e70a1f72-a3ea-40d1-b232-a5d3058b59ac">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no_nip}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="360" y="58" width="70" height="12" uuid="17b3976f-7fb2-4a23-a170-566f35135025">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[NIP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="70" width="70" height="12" uuid="a4a0be1e-ba2e-41f0-ae22-0b958f1ebedc">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Bagian]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="82" width="70" height="12" uuid="105cb87d-94f1-4547-9192-a39a1d5d1eda">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Perusahaan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="94" width="70" height="12" uuid="a4dbab1e-27c6-4e1e-b636-04fca4b61ec8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Paket MCU]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="430" y="94" width="125" height="12" uuid="77026fdb-45da-4a9f-9356-7676e7b38263">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{paket_mcu}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="34" width="125" height="12" uuid="60a25579-ab13-4587-8402-e381567e41cd"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jenis_kelamin}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageFooter>
+		<band height="43" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="5" width="555" height="10" uuid="630cf9d8-57fc-4870-bd41-1a5f274c678a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Roboto" size="8"/>
+				</textElement>
+				<text><![CDATA[Klinik Primasentul]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="14" width="555" height="10" uuid="ee91ff12-2e9e-4fb3-88bb-02ae1ca260e3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Roboto" size="8"/>
+				</textElement>
+				<text><![CDATA[Jl. Raya Serang KM.24 Ruko Unggul Center Blok A No. 11 Sentul Balaraja]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="24" width="555" height="10" uuid="c73fcf50-902f-406c-806c-b2c7189d60a9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Roboto" size="8"/>
+				</textElement>
+				<text><![CDATA[Telp / Fax : 021 5945 1353]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="32" width="555" height="10" uuid="cd954741-6b5e-4a6b-9301-0657492ed559"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Roboto" size="8"/>
+				</textElement>
+				<text><![CDATA[Email : primasentul@yahoo.com]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

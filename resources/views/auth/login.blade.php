@@ -182,7 +182,7 @@ a {
             <div class="col-lg-6">
                 <div class="card1 pb-5">
                     <div class="row">
-                        <img src="https://gmeds.plazamedis.web.id/img/logo.png" class="logo">
+                         <img src="{{ asset('assets/images/icon/logo2.png') }}" class="logo" width="220">
                     </div>
                     <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
                         <img src="{{ asset('assets/images/icon/uNGdWHi - Imgur.png') }}" class="image">
