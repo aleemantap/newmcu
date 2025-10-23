@@ -1316,7 +1316,7 @@
 				<tr><td width="100%" valign="top" style="padding-left:10px;"><b>Kesan Rontgen :</b> <i>{{ $data->rontgen?$data->rontgen->kesan_rontgen:'' }}</i></td></tr>
 				<tr>
 					<td width="100%" valign="top" style="padding-left:10px;" align="center">
-						<img style="width:60%;object-fit: cover;" src="{{$data->rontgen->foto?'https://gmeds-emcu.s3.ap-southeast-3.amazonaws.com/rontgen/'.$data->rontgen->foto:''}}" />
+						{{-- <img style="width:60%;object-fit: cover;" src="{{$data->rontgen->foto?'https://gmeds-emcu.s3.ap-southeast-3.amazonaws.com/rontgen/'.$data->rontgen->foto:''}}" /> --}}
 				    </td>
 				</tr>
 			</tbody>
@@ -1412,7 +1412,7 @@
 					<tr>
 						<td width="100%" valign="top" colspan="2"  style="padding-left:20px;">
 						   
-						   <img style="width:80%;" src="{{$data->ekg->foto?'https://gmeds-emcu.s3.ap-southeast-3.amazonaws.com/ekg/'.$data->ekg->foto:''}}" />
+						   {{-- <img style="width:80%;" src="{{$data->ekg->foto?'https://gmeds-emcu.s3.ap-southeast-3.amazonaws.com/ekg/'.$data->ekg->foto:''}}" /> --}}
 
 					    </td>
 					</tr>
