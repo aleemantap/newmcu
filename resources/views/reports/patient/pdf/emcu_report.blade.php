@@ -196,15 +196,15 @@
 				<tr>
 					<td width="50%">
 						<div class="box" style="">
-							<!-- <img width="100" src="{{public_path('storage/vendor/'.$data->vendorCustomer->vendor->image)}}" > -->
-							<img width="100" src="{{$logo}}" >
+							{{-- <img width="100" src="{{public_path('storage/vendor/'.$data->vendorCustomer->vendor->image)}}" />  --}}
+							<img width="100" src="{{$logo}}" />
 						</div>
 					</td>
 					<td style="" width="50%">
 						<table class="tb_he">
 							<tbody>
 								<tr>
-									<td width="40%" valign="top">Medical ID#</td>
+									<td width="40%" valign="top">Medical ID</td>
 									<td width="60%" class="td_1" valign="top">{{$data['id']}}</td>
 								</tr>
 								<tr>
@@ -397,7 +397,7 @@
 									<div>Medical Check Up Anda</div>
 									<div>Kepada Dokter Konsultan Kami</div>									
 									<div>
-								    	<img height="100" src="{{ public_path('img/qr-WAMCU.png') }}" >
+								    	<img height="100" src="{{ public_path('storage/upload/qr-WAMCU.png') }}" >
 									</div>
 									<div>Whatsapp</div>
 									<div style="font-weight:bold;">0811 9407 055</div>
@@ -1348,11 +1348,9 @@
 								  <div class="cell_ttd" style="text-align: center;" >
 									<div>Tangerang, {{$tglTTD}}</div>
 									<div>Radiologi</div>
-									
 									<div style="margin-right:-20px;">
 										<img height="162" width="311" src="{{$ttd_r}}" >
 									</div>
-									
 									<div>{{$nama_r}}</div>
 								  </div>
 							   </div>

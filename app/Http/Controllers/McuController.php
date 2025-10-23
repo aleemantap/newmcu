@@ -2863,7 +2863,10 @@ class McuController extends Controller
            
 		]);
 
-        return $pdf->stream();
+        $output =  $pdf->stream();
+		 
+        return $output;
+		
 	}
 	
 	public function publishMedicalCheckUpDetailForWA($id) 
@@ -2889,14 +2892,16 @@ class McuController extends Controller
         //} 
 
         
-
+		$kl = $this->dataTtd($mcu);
         $pdf =  PDF::loadview('reports.patient.pdf.emcu_report', [
             'data' => $mcu,
 			'audiometriChart' => $this->getChartFromImagechart($mcu->id),
             'spiro' => $spiro
-		]+$this->dataTtd($mcu));
+		]+$kl);
 
-        return $pdf->stream();
+        $output = $pdf->stream();
+		
+        return $output;
 	}
 
    
