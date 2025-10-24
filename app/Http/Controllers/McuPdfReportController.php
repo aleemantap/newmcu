@@ -101,17 +101,28 @@ class McuPdfReportController extends Controller
     {
         $mcu = Mcu::findOrFail($id);
 
-        $pdf = SnappyPdf::loadView('reports.patient.pdf.emcu_report.generate.pdf_emcu', compact('mcu'))
-        ->setOptions([
-            'no-outline' => true,
-            'page-size' => 'A4',
-            'dpi' => 300,
-            'enable-local-file-access' => true,
-        ]);
+        // $pdf = SnappyPdf::loadView('reports.patient.pdf.emcu_report.generate.pdf_emcu', compact('mcu'))
+        // ->setOptions([
+        //     'no-outline' => true,
+        //     'page-size' => 'A4',
+        //     'dpi' => 300,
+        //     'enable-local-file-access' => true,
+        // ]);
 
-        $path = "reports/mcu_{$mcu->id}.pdf";
-        //Log::info('PDF Options:', $pdf->getOptions());
-        \Illuminate\Support\Facades\Storage::put($path, $pdf->output());
+        // $path = "reports/mcu_{$mcu->id}.pdf";
+        // //Log::info('PDF Options:', $pdf->getOptions());
+        // \Illuminate\Support\Facades\Storage::put($path, $pdf->output());
+        $path = "public/reports/mcu_{$mcu->id}.pdf";
+        if (!Storage::exists($path)) {
+            $pdf = SnappyPdf::loadView('reports.patient.pdf.emcu_report.generate.pdf_emcu', compact('mcu'))
+                ->setOptions([
+                    'no-outline' => true,
+                    'page-size' => 'A4',
+                    'dpi' => 300,
+                    'enable-local-file-access' => true,
+                ]);
+            Storage::put($path, $pdf->output());
+        }
         
         return \Illuminate\Support\Facades\Storage::download($path);
    }
