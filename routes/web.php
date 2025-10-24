@@ -357,6 +357,14 @@ Route::post('/user-group/update',  [App\Http\Controllers\UserGroupController::cl
     Route::post('/sign-dokter/saveSpiro', [App\Http\Controllers\SignDokterController::class,'saveSpiro']);
 
 
+    //generte pdf modul snapy
+    Route::get('/mcu-pdf-report', [App\Http\Controllers\McuPdfReportController::class,'index']); 
+    Route::get('/reports/patient/{id}/emcu', [App\Http\Controllers\McuPdfReportController::class, 'emcuReport'])
+    ->name('reports.patient.emcu');
+    Route::get('/reports/patient/emcu/{id}', [App\Http\Controllers\McuPdfReportController::class, 'download'])
+    ->name('reports.patient.emcu.dowload');
+    Route::get('/reports/patient/emcu2/{id}', [App\Http\Controllers\McuPdfReportController::class, 'download2'])
+    ->name('reports.patient.emcu.dowload2');
 
 // Route without authentication for general purpose
 // like when execute on job queue, get part of data
