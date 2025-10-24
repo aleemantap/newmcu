@@ -363,7 +363,7 @@ Route::post('/user-group/update',  [App\Http\Controllers\UserGroupController::cl
     ->name('reports.patient.emcu');
     Route::get('/reports/patient/emcu/{id}', [App\Http\Controllers\McuPdfReportController::class, 'download'])
     ->name('reports.patient.emcu.dowload');
-    Route::get('/reports/patient/emcu2/{id}', [App\Http\Controllers\McuPdfReportController::class, 'download2'])
+    Route::get('/reports/patient/emcu-dua/{id}', [App\Http\Controllers\McuPdfReportController::class, 'emcuDua'])
     ->name('reports.patient.emcu.dowload2');
 
 // Route without authentication for general purpose

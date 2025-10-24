@@ -97,7 +97,7 @@ class McuPdfReportController extends Controller
     }
 
   
-   public function download2($id)
+   public function emcuDua($id)
     {
         $mcu = Mcu::findOrFail($id);
 
@@ -121,7 +121,7 @@ class McuPdfReportController extends Controller
             ]);
 
              Storage::put($path, $pdf->output());
-             Log::info('PDF tersimpan di: ' . storage_path("app/{$path}"));
+            // Log::info('PDF tersimpan di: ' . storage_path("app/{$path}"));
  
         }
 
