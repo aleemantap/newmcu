@@ -64,6 +64,7 @@ use App\Models\Reportsendwa;
 // use QuickChart; 
 use App\Models\Ttd;
 use Illuminate\Support\Facades\Log;
+use Spatie\Browsershot\Browsershot;
 
 //====
 
@@ -95,9 +96,188 @@ class McuPdfReportController extends Controller
             'vendorCustomer' => $vendorCustomer,
             'departments' => $departments]);
     }
+	public function emcuDua($id)
+{
+    $mcu = Mcu::findOrFail($id);
+    
+    $pdf = Browsershot::html(
+        view('reports.patient.pdf.emcu_report.generate.pdf_emcu', compact('mcu'))->render()
+    )
+    ->noSandbox() // <- Ini yang penting untuk Windows
+    ->format('A4')
+    ->pdf();
 
+    return response($pdf)
+        ->header('Content-Type', 'application/pdf')
+        ->header('Content-Disposition', 'attachment; filename="mcu_'.$mcu->id.'.pdf"');
+}
+	
+	public function emcuDua111($id)
+{
+    $mcu = Mcu::findOrFail($id);
+    $ttd = $this->dataTtd($mcu);
+    $audiometriChart = $this->getChartFromImagechart($id);
+    $html = view('reports.patient.pdf.emcu_report.generate.pdf_emcu', [
+            'mcu' => $mcu,
+            'audiometriChart' => $audiometriChart,
+			'lg'=> "tes"
+        ]+$ttd)->render();
+
+    $path = storage_path("app/public/reports/mcu_{$mcu->id}.pdf");
+
+    Browsershot::html($html)
+        ->margins(10, 10, 10, 10)
+        ->format('A4')
+        ->showBackground()
+        ->save($path);
+
+    return response()->download($path);
+}
+	
+	public function emcuDua22($id)
+{
+    $mcu = Mcu::findOrFail($id);
+
+    $filename = "mcu_{$mcu->id}.pdf";
+    $path = 'reports/' . $filename;
+
+    // Pastikan folder ada
+    if (!Storage::disk('public')->exists('reports')) {
+        Storage::disk('public')->makeDirectory('reports');
+    }
+
+    $ttd = $this->dataTtd($mcu);
+    $audiometriChart = $this->getChartFromImagechart($id);
+
+    if (!Storage::disk('public')->exists($path)) {
+
+        // ✅ Render HTML dari view Blade
+        $html = view('reports.patient.pdf.emcu_report.generate.pdf_emcu', [
+            'mcu' => $mcu,
+            'audiometriChart' => $audiometriChart,
+			'lg'=> "tes"
+        ]+$ttd)->render();
+	    // file_put_contents(storage_path('app/public/debug_pdf.html'), $html);
+
+        // Log HTML untuk debug (pastikan panjangnya muncul)
+       //Log::info('PDF HTML Rendered:', [substr($html, 0, 500)]); // log 500 karakter pertama saja
+
+        // ✅ Generate PDF dari HTML
+        $pdf = SnappyPdf::loadHTML($html)
+            ->setOptions([
+                'no-outline' => true,
+                'page-size' => 'A4',
+                'dpi' => 300,
+                'enable-local-file-access' => true,
+                'margin-top' => 10,
+                'margin-right' => 10,
+                'margin-bottom' => 10,
+                'margin-left' => 10,
+                'print-media-type' => true,
+            ]);
+
+        // ✅ Simpan ke storage publik
+        Storage::disk('public')->put($path, $pdf->output());
+
+        //Log::info('PDF saved to: ' . Storage::disk('public')->path($path));
+    }
+
+    // ✅ Download file dari storage publik
+    return Storage::disk('public')->download($path);
+}
+
+	
+public function emcuDua222($id)
+{
+    $mcu = Mcu::findOrFail($id);
+    
+    $filename = "mcu_{$mcu->id}.pdf";
+    $path = 'reports/' . $filename;
+
+    // Gunakan public disk
+    if (!Storage::disk('public')->exists('reports')) {
+        Storage::disk('public')->makeDirectory('reports');
+    }// 'audiometriChart', 'ttd'
+    $ttd = $this->dataTtd($mcu);
+    $audiometriChart = $this->getChartFromImagechart($id);
+    if (!Storage::disk('public')->exists($path)) {
+        $pdf = SnappyPdf::loadView(
+            'reports.patient.pdf.emcu_report.generate.pdf_emcu',
+             compact('mcu')) 
+			 ->setOptions([
+            'no-outline' => true,
+            'page-size' => 'A4',
+            'dpi' => 300,
+            'enable-local-file-access' => true,
+            'margin-top' => 10,
+            'margin-right' => 10,
+            'margin-bottom' => 10,
+            'margin-left' => 10,
+            'print-media-type' => true,
+        ]);
+
+        // Simpan ke public disk
+        Storage::disk('public')->put($path, $pdf->output());
+        \Log::info('PDF HTML Content:', [$pdf]);
+        //Log::info('PDF saved to: ' . Storage::disk('public')->path($path));
+    }
+
+    // Download dari public disk
+    return Storage::disk('public')->download($path);
+}
+
+    public function emcuDua3($id)
+{
+    $mcu = Mcu::findOrFail($id);
+
+    // Gunakan path yang konsisten
+    $filename = "mcu_{$mcu->id}.pdf";
+    $directory = 'reports';
+    $path = $directory . '/' . $filename;
+
+    try {
+        // Pastikan folder 'reports' ada
+        if (!Storage::disk('local')->exists($directory)) {
+            Storage::disk('local')->makeDirectory($directory);
+        }
+
+        // Generate PDF hanya jika belum ada
+        if (!Storage::disk('local')->exists($path)) {
+            $pdf = SnappyPdf::loadView(
+                'reports.patient.pdf.emcu_report.generate.pdf_emcu',
+                compact('mcu')
+            )->setOptions([
+                'no-outline' => true,
+                'page-size' => 'A4',
+                'dpi' => 300,
+                'enable-local-file-access' => true,
+            ]);
+
+            // Coba metode yang berbeda:
+            
+            // Metode 1: Simpan langsung
+            $pdf->save(storage_path('app/' . $path));
+            
+            // Atau Metode 2: Gunakan Storage put
+            // Storage::disk('local')->put($path, $pdf->output());
+            
+            Log::info('PDF berhasil disimpan di: ' . storage_path('app/' . $path));
+        }
+
+        // Cek apakah file benar-benar ada
+        if (Storage::disk('local')->exists($path)) {
+            return Storage::disk('local')->download($path);
+        } else {
+            throw new \Exception("File PDF tidak ditemukan setelah generate");
+        }
+
+    } catch (\Exception $e) {
+        Log::error('Error generate PDF: ' . $e->getMessage());
+        return back()->with('error', 'Gagal generate PDF: ' . $e->getMessage());
+    }
+}
   
-   public function emcuDua($id)
+   public function emcuDua2($id)
     {
         $mcu = Mcu::findOrFail($id);
 
@@ -120,8 +300,12 @@ class McuPdfReportController extends Controller
                 'enable-local-file-access' => true,
             ]);
 
-             Storage::put($path, $pdf->output());
-            // Log::info('PDF tersimpan di: ' . storage_path("app/{$path}"));
+            //  Storage::put($path, $pdf->output());
+             //$pdf->save(storage_path('app/' . $path));
+             //Log::info('PDF tersimpan di: ' . storage_path("app/{$path}"));
+
+              Storage::disk('public')->put('pdf/' . $path, $pdf->output());
+    
  
         }
 
@@ -129,7 +313,26 @@ class McuPdfReportController extends Controller
         return Storage::download($path);
     }
 
-    public function download($id) 
+    
+	public function downloadx($id) 
+{
+    $mcu = Mcu::find($id);
+    
+    $c = $this->chart($id);
+    $labels = implode(", ", $c[0]); 
+    $kiri = implode(", ", $c[1]);
+    $kanan = implode(", ", $c[2]);
+    
+    // Return view sebagai HTML (bukan PDF)
+    return view('reports.patient.pdf.emcu_report', [
+        'data' => $mcu,
+        'audiometriChart' => $this->getChartFromImagechart($id),
+        'labels' => $labels,
+        'kiri' => $kiri, 
+        'kanan' => $kanan
+    ] + $this->dataTtd($mcu));
+}
+	public function download($id) 
     {
         
         $mcu = Mcu::find($id);
@@ -140,22 +343,33 @@ class McuPdfReportController extends Controller
         $kiri = implode(", ", $c[1]);
         $kanan = implode(", ", $c[2]);
         
-        $pdf =  SnappyPdf::loadview('reports.patient.pdf.emcu_report', [
+        $pdf =  PDF::loadview('reports.patient.pdf.emcu_report.generate.pdf_emcu', [
             'data' => $mcu,
             'audiometriChart' => $this->getChartFromImagechart($id)
-        ]+$this->dataTtd($mcu)) ->setOptions([
-            'no-outline' => true,
-            'page-size' => 'A4',
-            'dpi' => 400,
-            'enable-local-file-access' => true,
-        ]);
+        ]+$this->dataTtd($mcu))->setPaper('A4', 'portrait');
+		$pdf->setOptions([
+			'dpi' => 72,
+			'defaultFont' => 'DejaVu Sans',
+			'isRemoteEnabled' => true,
+			'isHtml5ParserEnabled' => true,
+			'isPhpEnabled' => true,
+		]);
+		//->setOptions([
+          //  'no-outline' => true,
+            //'page-size' => 'A4',
+            //'dpi' => 400,
+            //'enable-local-file-access' => true,
+        //]);
         //$file = str_replace(" ","-",$id).'-'.$mcu->nama_pasien.'.pdf';
         //return $pdf->download($file);
-         $path = "reports/mcu_{$mcu->id}.pdf";
+        // $path = "reports/mcu_{$mcu->id}.pdf";
         //Log::info('PDF Options:', $pdf->getOptions());
-        \Illuminate\Support\Facades\Storage::put($path, $pdf->output());
+        //\Illuminate\Support\Facades\Storage::put($path, $pdf->output());
         
-        return \Illuminate\Support\Facades\Storage::download($path);
+        //return \Illuminate\Support\Facades\Storage::download($path);
+		 $output = $pdf->stream();
+		
+        return $output;
        
     }
 
@@ -261,6 +475,150 @@ class McuPdfReportController extends Controller
      
 		
 	}
+
+
+public function exportPdf($id)
+{
+    $mcu = MCU::findOrFail($id);
+
+    // 🔹 Pastikan folder tmp ada
+    if (!file_exists(storage_path('app/tmp'))) {
+        mkdir(storage_path('app/tmp'), 0777, true);
+    }
+
+    // 1️⃣ Render Blade ke HTML file sementara
+    //$html = view('reports.patient.pdf.emcu_report.generate.tes_emcu', compact('mcu'))->render();
+	$ttd = $this->dataTtd($mcu);
+    $audiometriChart = $this->getChartFromImagechart($id);
+    $html = view('reports.patient.pdf.emcu_report.generate.tes_emcu', [
+            'data' => $mcu,
+            'audiometriChart' => $audiometriChart,
+			'lg'=> "tes"
+        ]+$ttd)->render();
+	// $html = view('reports.patient.pdf.emcu_report.generate.pdf', compact('mcu'))->render();
+    $tmpHtml = storage_path("app/tmp/mcu_{$id}.html");
+    file_put_contents($tmpHtml, $html);
+
+    // 2️⃣ Tentukan path output PDF
+    $pdfPath = storage_path("app/public/pdf/mcu_{$id}.pdf");
+
+    // Pastikan folder output ada
+    if (!file_exists(dirname($pdfPath))) {
+        mkdir(dirname($pdfPath), 0777, true);
+    }
+
+    // 3️⃣ Tentukan path Python script
+    $python = base_path('scripts/generate_pdf.py');
+
+    // Escape semua path agar aman
+    $pythonEsc = escapeshellarg($python);
+    $tmpHtmlEsc = escapeshellarg($tmpHtml);
+    $pdfPathEsc = escapeshellarg($pdfPath);
+
+    // Gunakan python (Windows) atau python3 (Linux/Mac)
+    $pythonCmd = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' ? 'python' : 'python3';
+
+    // ⏱️ Mulai timer
+    $start = microtime(true);
+
+    // Jalankan perintah Python
+    $cmd = "{$pythonCmd} {$pythonEsc} {$tmpHtmlEsc} {$pdfPathEsc}";
+    exec($cmd . " 2>&1", $output, $status); // redirect error ke output
+
+    // ⏱️ Hitung waktu eksekusi
+    $duration = round(microtime(true) - $start, 2); // dalam detik
+
+    // 4️⃣ Normalisasi path agar file_exists berfungsi di Windows
+    $normalizedPath = str_replace(['\\', '"'], ['/', ''], $pdfPath);
+
+    // 5️⃣ Cek hasil
+    if ($status === 0 && file_exists($normalizedPath)) {
+        return response()->json([
+            'success' => true,
+            'message' => 'PDF berhasil dibuat',
+            'path' => $normalizedPath,
+            'duration' => "{$duration} detik",
+            'output' => $output,
+        ]);
+    }
+
+    // 6️⃣ Kalau gagal, kirim pesan debug
+    return response()->json([
+        'success' => false,
+        'message' => 'Gagal generate PDF',
+        'duration' => "{$duration} detik",
+        'output' => $output,
+        'cmd' => $cmd,
+    ], 500);
+}
+
+
+public function exportPdf_($id)
+{
+    $mcu = MCU::findOrFail($id);
+
+    // 🔹 Pastikan folder tmp ada
+    if (!file_exists(storage_path('app/tmp'))) {
+        mkdir(storage_path('app/tmp'), 0777, true);
+    }
+
+    // 1️⃣ Render Blade ke HTML file sementara
+    $html = view('reports.patient.pdf.emcu_report.generate.pdf', compact('mcu'))->render();
+    $tmpHtml = storage_path("app/tmp/mcu_{$id}.html");
+    file_put_contents($tmpHtml, $html);
+
+    // 2️⃣ Tentukan path output PDF
+    $pdfPath = storage_path("app/public/pdf/mcu_{$id}.pdf");
+
+    // Pastikan folder output ada
+    if (!file_exists(dirname($pdfPath))) {
+        mkdir(dirname($pdfPath), 0777, true);
+    }
+
+    // 3️⃣ Tentukan path Python script
+    $python = base_path('scripts/generate_pdf.py');
+
+    // Escape semua path agar aman
+    $pythonEsc = escapeshellarg($python);
+    $tmpHtmlEsc = escapeshellarg($tmpHtml);
+    $pdfPathEsc = escapeshellarg($pdfPath);
+
+    // Gunakan python (Windows) atau python3 (Linux/Mac)
+    $pythonCmd = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' ? 'python' : 'python3';
+
+    // ⏱️ Mulai timer
+    $start = microtime(true);
+
+    // Jalankan perintah Python
+    $cmd = "{$pythonCmd} {$pythonEsc} {$tmpHtmlEsc} {$pdfPathEsc}";
+    exec($cmd . " 2>&1", $output, $status); // redirect error ke output
+
+    // ⏱️ Hitung waktu eksekusi
+    $duration = round(microtime(true) - $start, 2); // dalam detik
+
+    // 4️⃣ Normalisasi path agar file_exists berfungsi di Windows
+    $normalizedPath = str_replace(['\\', '"'], ['/', ''], $pdfPath);
+
+    // 5️⃣ Cek hasil
+    if ($status === 0 && file_exists($normalizedPath)) {
+        return response()->json([
+            'success' => true,
+            'message' => 'PDF berhasil dibuat',
+            'path' => $normalizedPath,
+            'duration' => "{$duration} detik",
+            'output' => $output,
+        ]);
+    }
+
+    // 6️⃣ Kalau gagal, kirim pesan debug
+    return response()->json([
+        'success' => false,
+        'message' => 'Gagal generate PDF',
+        'duration' => "{$duration} detik",
+        'output' => $output,
+        'cmd' => $cmd,
+    ], 500);
+}
 
 
     /*public function download2($id)

@@ -144,9 +144,11 @@ class Controller extends BaseController
 	
 	public function getUrlAwsFile($file)
     {
-     	return public_path('storage/upload/'.$file);
+     	return "data:image/png;base64,".base64_encode(file_get_contents(public_path('storage/upload/'.$file)))."";
+		//return public_path('storage/upload/'.$file);
+     	//return asset('storage/upload/'.$file); //{{ asset('images/header.png') }}
     }
-
+ 
     public function dataTtd($mcu)
     {
        
@@ -168,6 +170,8 @@ class Controller extends BaseController
             'nama_sp' => ($ttd_sp) ?  $ttd_sp->nama_dokter : "",
             'logo'=> ($mcu->vendorCustomer->vendor->image) ? $this->getUrlAwsFile($mcu->vendorCustomer->vendor->image) : "",
             'sign'=>  ($mcu->vendorCustomer->vendor->sign) ? $this->getUrlAwsFile($mcu->vendorCustomer->vendor->sign) : "",
+			'qr_code' =>  "data:image/png;base64,".base64_encode(file_get_contents(public_path('storage/upload/qr-WAMCU.png')))."",
+			
             
             
             ];

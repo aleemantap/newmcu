@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="en">
 <head>
 
 <style>
@@ -19,7 +19,7 @@
 
 	@page {
 		size: A4;
-		margin-top: 1cm;
+		margin-top: 0.5cm;
 		margin-left: 1cm;
 		margin-right: 1cm;
 		margin-bottom: 0cm;
@@ -29,12 +29,12 @@
 	body {
 	}
 	.header {
-	         position: fixed;
-			 top: 3px;
+	         /* position: fixed; */
+			 /* top: 1px; */
 
 			 }
 
-	footer {
+ footer {
 			  position: fixed;
 			  bottom: 3px;
     		  font-size: 8pt;
@@ -55,7 +55,7 @@
 				 align-items: center;
 				 display: block;
 
-			}
+			} 
 
 
 
@@ -78,9 +78,9 @@
 		table tr th{
 			font-size: 9pt;
 		}
-		table.table1{
+	    .table1{
 
-			width : 100%;
+			width : 700px;
 
 			margin-left : 10px;
 			margin-right : 10px;
@@ -110,15 +110,15 @@
 		}
 		.table2 td {
 					  border-width: 1px;
-					  padding: 8px;
+					  padding: 1px;
 					}
 		.td_1{
 			padding-left: 10px;
 
 		}
 		.tb_he {
-			padding-left: 80px;
-			border-spacing: 0px;
+			/* padding-left: 80px; */
+			/* border-spacing: 0px; */
 
 		}
 	    .title_head {
@@ -156,8 +156,8 @@
 {
   margin-bottom:0px;
   margin-left:16px;
-  font-size:12px;
-  font-weight: bold;
+  font-size:10px;
+  
 
 
 }
@@ -187,272 +187,127 @@
 }
 </style>
 
+<style>
+  /* Global untuk header */
+  .pdf-header {
+    width: 100%;
+    margin: 0 auto;
+    /* beri padding horizontal agar tidak nempel ke tepi */
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  /* table wrapper agar reliable di PDF */
+  .pdf-header-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  /* kolom logo: fixed width supaya proporsional */
+  .pdf-header-table td.logo-col {
+    width: 180px;                 /* atur lebar logo sesuai kebutuhan */
+    vertical-align: middle;       /* center vertical */
+    text-align: left;
+    padding: 6px 10px 6px 0;
+  }
+
+  .pdf-header-table img.logo {
+    display: block;
+    max-width: 160px;             /* pastikan tidak overflow */
+    max-height: 160px;
+    width: auto;
+    height: auto;
+  }
+
+  /* kolom data: ambil sisa lebar */
+  .pdf-header-table td.info-col {
+    vertical-align: middle;
+    padding-left: 20px;
+  }
+
+  .patient-info {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .patient-info td.label {
+    width: 30%;                   /* label kolom kiri relatif */
+    font-weight: 700;
+    padding: 2px 6px;
+    vertical-align: top;
+  }
+
+  .patient-info td.value {
+    width: 70%;
+    padding: 2px 6px;
+    vertical-align: top;
+  }
+
+  /* buat tampilan responsif untuk teks panjang */
+  .patient-info td.value { word-wrap: break-word; }
+
+  /* agar area header tidak terlalu tinggi */
+  .pdf-header .small { font-size: 11px; color:#222; }
+</style>
+
 </head>
 <body>
 	  <main>
-	    <div class="header" style="">
-			<table class="table1">
-				<tbody>
-					<tr>
-						<td width="50%">
-							<div class="box" style="">
-								<img width="100" src="{{$logo}}" />
-							</div>
-						</td>
-						<td style="" width="50%">
-							<table class="tb_he">
-								<tbody>
-									<tr>
-										<td width="40%" valign="top">Medical ID</td>
-										<td width="60%" class="td_1" valign="top">{{$data['id']}}</td>
-									</tr>
-									<tr>
-										<td valign="top">Nama</td>
-										<td class="td_1" valign="top">{{$data['nama_pasien']}}</td>
-									</tr>
-									<tr>
-										<td width="">Jenis Kelamin</td>
-										<td class="td_1">{{ ($data['jenis_kelamin']=='P') ? 'PEREMPUAN' : 'LAKI-LAKI'  }}</td>
-									</tr>
-									<tr>
-										<td>Tanggal Lahir</td>
-										<td class="td_1">{{date("d/m/Y", strtotime($data['tgl_lahir']))}}</td>
-									</tr>
-									<tr>
-										<td>NIP</td>
-										<td class="td_1">{{$data['no_nip']}}</td>
-									</tr>
-									<tr>
-										<td>Bagian</td>
-										<td class="td_1">{{$data['bagian']}}</td>
-									</tr>
-									<tr>
-										<td valign="top">Perusahaan</td>
-										<td class="td_1" valign="top">
-											{{ $data->vendorCustomer->customer->name }}
-										</td>
-									</tr>
-									<tr>
-										<td>Paket MCU</td>
-										<td class="td_1">{{$data['paket_mcu']}}</td>
-									</tr>
-								</tbody>
-							</table>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	    <div class="title_head" style="height: 620px;">
-			<center>
-				<h3>RESUME MEDICAL CHECK UP</h3>
-			</center>
-			<br/>
-			<table class="table2"  cellspacing="0">
-				<tbody>
-					<tr style="">
-						<td width="30%">
-							<div style="font-style:bold;">
-								Diagnosis Kesehatan Kerja
-							</div>
-						</td>
-						<td style="text-align: center; vertical-align: middle;" width="30%">
-							<div style="">
-							@php
-							    $workHealthDiagnosis  = 'FIT ON JOB';
-								if($data->diagnosis->count() > 0) {
+	    <!-- HEADER -->
+<div class="pdf-header">
+  <table class="pdf-header-table">
+    <tr>
+      <!-- LOGO KIRI -->
+      <td class="logo-col">
+        <!-- gunakan public_path() atau file:/// pada Windows jika perlu; public_path() sudah ok -->
+        <img class="logo" src="{{ $logo }}" alt="Logo">
+      </td>
 
-									$arrDiagnosis = collect();
-									foreach($data->diagnosis->where('deleted',0) as $d) {
-										$arrDiagnosis->push([
-										   'sequence' => $d->recommendation->workHealth->sequence,
-										   'diagnosis' => $d->recommendation->workHealth->name
-										]);
-										
-									}
-
-									$getDiagnosis = collect($arrDiagnosis)->sortBy('sequence')->first();
-									$workHealthDiagnosis = $getDiagnosis['diagnosis'];
-
-								}
-								$sts_diag = ($workHealthDiagnosis) ? strtoupper($workHealthDiagnosis) : 'Normal Condition';
-							@endphp
-							<b>{{ $sts_diag }}</b> 
-							</div>
-						</td>
-						<td style="text-align: center; vertical-align: middle;" width="40%">
-
-						</td>
-					</tr>
-					<tr>
-						<td colspan="3">
-						<b>Catatan </b><p>{{$data['catatan']}}</p>
-						</td>
-						
-					</tr>
-					<tr>
-						<td  colspan="3">
-						<b>Saran</b><p>
-						{{$data['saran']}}
-
-						</p>
-						</td>
-					</tr>
-					<tr>
-						<td  colspan="3">
-						<b>Diagnosis Kerja</b>
-						</td>
-					</tr>
-					<tr>
-						<td align="justify"  width="20%">
-							<b>Kategori Pemeriksaan</b>
-						</td>
-						<td style="text-align: justify; vertical-align: top;" width="35%">
-							<b>ICD X</b>
-						</td>
-						<td style="text-align: justify; vertical-align: middle;" width="45%">
-							<b>Saran</b>
-						</td>
-					</tr>
-					    <?php $coun_char = 0; ?> 
-						@if($data->diagnosis->where('deleted',0)->count() > 0)
-
-							<?php
-								$i=0;
-								$temp_icd= "";
-								$temp_kategori="";
-
-							?>
-							@foreach($data->diagnosis->where('deleted',0) as $d)
-
-									<?php
-
-										//if($temp_icd==$d->recommendation->icd10->name)
-										//{
-										//	continue;
-										//}
-
-
-										$icd_n = ($d->recommendation->icd10) ? $d->recommendation->icd10->name : '';
-										if($icd_n != "")
-										{
-											if($temp_icd==$d->recommendation->icd10->name)
-											{
-												continue;
-											}
-										}
-
-
-									?>
-
-									<tr>
-									    <td style="text-align: justify; vertical-align: top;">{{ $d->recommendation->formulaDetail->formula->rumus->rumusDetail->parameter->kategori}}</td>
-										<td style="text-align: justify; vertical-align: top;">{{  ($d->recommendation->icd10) ? $d->recommendation->icd10->name : '' }}</td>
-										<td valign="top" style="text-align: justify; vertical-align: top;">{{  ($d->recommendation->recommendation) ? $d->recommendation->recommendation : '' }}</td>
-									</tr>
-
-									<?php
-
-										$w1 = $d->recommendation->formulaDetail->formula->rumus->rumusDetail->parameter->kategori;
-										$w2 = ($d->recommendation->icd10) ? $d->recommendation->icd10->name : '';
-										$w3 = ($d->recommendation->recommendation) ? $d->recommendation->recommendation : '';
-										//$w3 = $d->recommendation->recommendation;
-										$coun_char = $w1."".$w2."".$w3."".$coun_char;
-										$temp_icd=$w2;
-										$temp_kategori=$d->recommendation->formulaDetail->formula->rumus->rumusDetail->parameter->kategori;
-
-									?>
-							<?php $i++; ?>
-							@endforeach
-						@else
-							<tr style="">
-								<td valign="top"></td>
-								<td valign="top">Normal Condition</td>
-								<td valign="top">Pertahankan pola hidup sehat, jaga pola makan dengan diet seimbang, olah raga teratur dan istirahat yang cukup karena saat ini anda dalam kondisi sehat</td>
-							</tr>
-						@endif
-
-				</tbody>
-				</table>
-	    </div>
-
-		<?php //if(strlen($coun_char) > 500) { ?>
-		&nbsp;
-		<?php //} ?>
-
-
-
-
-		<footer>
-			<table style="width: 100%;">
-			    <tr>
-			     	<td style="text-align:left;">
-					    <div class="" style="margin-left:-100px;font-size:10pt;">					    
-
-							<div xclass="table_ttd">
-							   <div xclass="row_ttd">
-								  <div class="cell_ttd" style="text-align: center;">
-									<div>Konsultasikan Hasil</div>
-									<div>Medical Check Up Anda</div>
-									<div>Kepada Dokter Konsultan Kami</div>									
-									<div>
-								    	<img height="100" src="{{ public_path('storage/upload/qr-WAMCU.png') }}" >
-									</div>
-									<div>Whatsapp</div>
-									<div style="font-weight:bold;">0811 9407 055</div>
-								  </div>
-							   </div>
-							</div>
-						</div>
-						  <br/>
-						  <br/>
-						  <br/>
-						 
-				    </td>
-					<td xstyle="text-align:right;">
-						<div class="" style="margin-right:-140px;font-size:10pt;">
-						    
-
-							<div class="table_ttd">
-							   <div class="row_ttd">
-								  <div class="cell_ttd" style="text-align: center;">
-									<div>Dokter Pemeriksa Kesehatan Tenaga Kerja</div>
-									<div>{{ $data->vendorCustomer->vendor->doctor_name}}</div>
-									
-									<div>
-									    <img height="100" src="{{$sign}}" >
-										<!-- <img height="100" src="{{ public_path('storage/vendor/'.$data->vendorCustomer->vendor->sign) }}" > -->
-									</div>
-									<div>No Register PJK3 Kemenakertrans</div>
-									<div>{{ $data->vendorCustomer->vendor->doctor_license}}</div>
-								  </div>
-							   </div>
-							</div>
-						</div>
-						  <br/>
-						  <br/>
-					</td>
-				</tr>
-				<tr>
-					
-					<td style="text-align: center;" colspan="2">
-						<div class="footx" style="margin-top:-30px;">
-							 <div>{{$data->vendorCustomer->vendor->name}} </div>
-							 <div>{{$data->vendorCustomer->vendor->address1}} {{$data->vendorCustomer->vendor->zip_code}}</div>
-							 <div>
-								 @if($data->vendorCustomer->vendor->fax)
-									Telp : {{$data->vendorCustomer->vendor->phone}} -  Fax :  {{$data->vendorCustomer->vendor->fax}}
-								 @else
-									Telp : {{$data->vendorCustomer->vendor->phone}}
-								 @endif
-							 </div>
-							<div>Email : {{$data->vendorCustomer->vendor->email}} </div>
-						</div>
-
-					</td>
-				</tr>
-			</table>
-	    </footer>
+      <!-- DATA KANAN -->
+      <td class="info-col">
+        <table class="patient-info">
+          <tr>
+            <td class="label small">Medical ID</td>
+            <td class="value small">{{ $data['id'] ?? ($mcu->medical_id ?? '-') }}</td>
+          </tr>
+          <tr>
+            <td class="label small">Nama</td>
+            <td class="value small">{{ $data['nama_pasien'] ?? ($mcu->nama ?? '-') }}</td>
+          </tr>
+          <tr>
+            <td class="label small">Jenis Kelamin</td>
+            <td class="value small">{{ ($data['jenis_kelamin'] ?? $mcu->jenis_kelamin) == 'P' ? 'PEREMPUAN' : 'LAKI-LAKI' }}</td>
+          </tr>
+          <tr>
+            <td class="label small">Tanggal Lahir</td>
+            <td class="value small">
+              {{ optional(\Carbon\Carbon::parse($data['tgl_lahir'] ?? $mcu->tgl_lahir))->format('d/m/Y') ?? '-' }}
+            </td>
+          </tr>
+          <tr>
+            <td class="label small">NIP</td>
+            <td class="value small">{{ $data['no_nip'] ?? ($mcu->nip ?? '-') }}</td>
+          </tr>
+          <tr>
+            <td class="label small">Bagian</td>
+            <td class="value small">{{ $data['bagian'] ?? ($mcu->bagian ?? '-') }}</td>
+          </tr>
+          <tr>
+            <td class="label small">Perusahaan</td>
+            <td class="value small">{{ $data['perusahaan'] ?? ($mcu->perusahaan ?? '-') }}</td>
+          </tr>
+          <tr>
+            <td class="label small">Paket MCU</td>
+            <td class="value small">{{ $data['paket_mcu'] ?? ($mcu->paket_mcu ?? '-') }}</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+	  
 		@if($data->umum->nadi != null or $data->umum->suhu != null or $data->umum->respirasi != null)
 		<p></p>
 		<div class="header">
@@ -493,8 +348,8 @@
 		
 
 		<fieldset  class="fieldset1">
-			<legend class="legend1">Kebiasaan Dan Pekerjaan</legend>
-			<table border="" cellspacing="0" class="table_adpf" style="margin : 5px 30px 10px 20px;">
+			<legend class="legend1" style="font-z">Kebiasaan Dan Pekerjaan</legend>
+			<table  cellspacing="0" class="xtable_adpf" style="margin : 5px 5px 5px 5px;">
 					   <tbody>
 							<tr class="">
 								<td width="">Olahraga</td>
@@ -2510,7 +2365,7 @@
 			            margin-top:-20px;
 						font-style:italic;
 						font-weight:300;
-			a			text-align: justify;
+						text-align: justify;
 						text-justify: inter-word;
 						padding-right:5px;
 						padding-bottom:15px;

@@ -365,6 +365,7 @@ Route::post('/user-group/update',  [App\Http\Controllers\UserGroupController::cl
     ->name('reports.patient.emcu.dowload');
     Route::get('/reports/patient/emcu-dua/{id}', [App\Http\Controllers\McuPdfReportController::class, 'emcuDua'])
     ->name('reports.patient.emcu.dowload2');
+    Route::get('/mcu/pdf/{id}', [App\Http\Controllers\McuPdfReportController::class, 'exportPdf']);
 
 // Route without authentication for general purpose
 // like when execute on job queue, get part of data
